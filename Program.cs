@@ -1,4 +1,6 @@
-﻿namespace VoituresGTA;
+﻿using System.Runtime.CompilerServices;
+
+namespace VoituresGTA;
 /*
     CONSIGNES
     1. Déclarer un tableau contenant cinq véhicules :
@@ -15,8 +17,26 @@
 */
 class Program
 {
+    private static void DisplayCars(string[] cars)
+    {
+        for (int i = 0; i < cars.Length; i++)
+        {
+            Console.WriteLine((i + 1) + " : " + cars[i]);
+        }
+    }
     static void Main(string[] args)
     {
+        string[] cars = { "Banshee", "Zentorno", "Sultan", "Sanchez", "Buzzard" };
         
+        for(int i = 0; i< cars.Length; i++)
+        {
+            Console.WriteLine((i +1)+ " : " + cars[i]);
+        }
+        Console.WriteLine("Quel véhicule souhaitez-vous remplacer ? (entrez le numéros de votre choix)");
+        int choice = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Veuillez donner le nom du véhicule qui remplacera " + cars[choice-1] + " ?");
+        string newCar = Console.ReadLine();
+        cars[choice-1] = newCar;
+        DisplayCars(cars);
     }
 }
